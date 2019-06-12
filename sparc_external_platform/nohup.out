@@ -1,0 +1,22 @@
+[31mroscore cannot run as another roscore/master is already running. 
+Please kill other roscore/master processes before relaunching.
+The ROS_MASTER_URI is http://sparc:11311/[0m
+[31mThe traceback for the exception was written to the log file[0m
+... logging to /home/sparc-308/.ros/log/2e6276ce-f3b0-11e8-96fd-4ccc6a4f355a/roslaunch-sparc-11579.log
+Checking log directory for disk usage. This may take awhile.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;roscore
+[1mstarted roslaunch server http://sparc:44568/[0m
+ros_comm version 1.12.12
+
+
+SUMMARY
+========
+
+PARAMETERS
+ * /rosdistro: kinetic
+ * /rosversion: 1.12.12
+
+NODES
+
