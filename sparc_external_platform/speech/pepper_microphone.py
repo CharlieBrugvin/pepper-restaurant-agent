@@ -108,8 +108,14 @@ class PepperSpeechRecognitionEngine:
 
 	def recognize_google(self, audio_data, language, show_all=False):
 		print("Sending frame data")
-
 		flac_data = audio_data.get_flac_data(convert_width=2, convert_rate=self.SAMPLE_RATE)
+
+		# update charlie
+		import time
+		f = open("pepper_audio_files/"+ str(time.time()) +".flac", "w")
+		f.write(flac_data)
+		# end update
+		
 		url = "http://www.google.com/speech-api/v2/recognize?{}".format(urlencode({
 			"client": "chromium",
 			"lang": language,

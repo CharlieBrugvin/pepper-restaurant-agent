@@ -57,8 +57,16 @@ Launch `pepper_bringup` in order to have acces to these topics :
 
 With your *Pepper IP address* :
 ```
-roslaunch pepper_bringup pepper_full.launch nao_ip:=<robot_ip> roscore_ip:=<roscore_ip> [network_interface:=<eth0|wlan0|vpn0>]
+roslaunch pepper_bringup pepper_full.launch nao_ip:=<robot_ip> roscore_ip:=<roscore_ip> [network_interface:=<eth0|wlan0|vpn0|wlp2s0>]
 ```
+
+### Audio source localization
+
+Launch `nao_interaction_launchers` with yout *Pepper IP address* :
+```
+roslaunch nao_interaction_launchers nao_audio_interface.launch nao_ip:=<robot_ip> nao_port:=<robot_port>
+```
+It publishes on the topic `/nao_audio/audio_source_localization`
 
 ### Pepper Speech Recognition
 
@@ -69,23 +77,12 @@ cd sparc_external_platform/speech
 Run :
 ```
 python run_nlp.py
-
 ```
 And answer `yes` to use the pepper microphone :
 ```
 Audio stream? [y/n]: y
 ```
-
 It publishes on the topic `/commands_text`
-
-### Audio source localization
-
-Launch `nao_interaction_launchers` with yout *Pepper IP address* :
-```
-roslaunch nao_interaction_launchers nao_audio_interface.launch nao_ip:=<robot_ip> nao_port:=<robot_port>
-```
-
-It publishes on the topic `/nao_audio/audio_source_localization`
 
 ### NNDIAL on a server
 
