@@ -14,12 +14,18 @@ from nao_interaction_msgs.msg import AudioSourceLocalization # audio localizatio
 from sensor_msgs.msg import Range # sonar
 from geometry_msgs.msg import PoseStamped # move
 
-# --------------------------- global variables -------------------------------
+# --------------------------- global constants -------------------------------
 # ----------------------------------------------------------------------------
 
 NNDIAL_URL = 'http://127.0.0.1:8000/'
 AUDIO_LOCALIZATION_INTENSITY_TRESHOLD = 0.2
 DISTANCE_TO_USER_DURGING_DIALOG = 0.50 # cm
+
+# ---------------------------- global variables  -----------------------------
+# ----------------------------------------------------------------------------
+
+# the timestamp of the begining and the end of the last pepper speech
+last_speech_start_date = last_speech_end_date = None
 
 # ---------------------------- function utils --------------------------------
 # ----------------------------------------------------------------------------
@@ -30,8 +36,8 @@ def console_log(message):
 # used when it is necessary to stop the program until a new topic value
 def wait_new_value_of_local_topic(topic_name, log=True):
     if log: console_log("waiting for a new value on the topic '" + topic_name + "'")
-    current_topic_value = local_topics[topic_name]
     
+    current_topic_value = local_topics[topic_name]
     while local_topics[topic_name] == current_topic_value:
         time.sleep(0.1)
 
@@ -80,20 +86,18 @@ local_topics = {
     'utterance_heard': None, # from /commands_text
     'distance_obstacle': None # from /pepper_robot/naoqi_driver/sonar/front
 }
-last_speech_start_date = None
-last_speech_end_date = None
 
 def on_new_audio_source_localization(new_value):
+    # angle in degree
     azimuth_deg = round(degrees(new_value.azimuth.data), 2)
     if azimuth_deg > 181: azimuth_deg -= 360
-
+    
     energy = round(new_value.energy.data, 2)
     if energy >= AUDIO_LOCALIZATION_INTENSITY_TRESHOLD:
         global local_topics
         local_topics['audio_source_angle'] = azimuth_deg
 
 def on_new_utterance_heard(new_value):
-    
     # we get text and date
     data = json.loads(new_value.data)
     utterance = data['text']
