@@ -21,7 +21,7 @@ display_images = True
 # Language information.
 language_en = 'en-EN'
 language_ro = 'ro-RO'
-language = language_ro
+language = language_en
 
 # Project path.
 project_path = '/home/sparc-308/workspace/sparc/'
