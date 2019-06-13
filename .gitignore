@@ -2,4 +2,4 @@
 sparc_external_platform/speech/pepper_audio_files/*
 
 # exception to the rule
-!somefolder/.gitkeep 
+!sparc_external_platform/speech/pepper_audio_files/.gitkeep 
