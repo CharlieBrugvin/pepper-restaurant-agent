@@ -1,6 +1,6 @@
 # Pepper restaurant agent
 
-Pepper restaurant agent is a program for the [social robot Pepper](https://www.softbankrobotics.com/emea/en/pepper?q=emea/fr/pepper). When launched, Pepper waits to be called by a user. It will then meet him and engage a conversation to help him to find a restaurant in Cambridge. When the conversation is over, Pepper goes back to its initial place, and wait to be called by another user.
+Pepper restaurant agent is a *ROS* module for the [social robot Pepper](https://www.softbankrobotics.com/emea/en/pepper?q=emea/fr/pepper). When launched, Pepper waits to be called by a user. It will then meet him and engage a conversation to help him to find a restaurant in Cambridge. When the conversation is over, Pepper goes back to its initial place, and wait to be called by another user.
 
 It uses ROS and the code is written in Python.
  
